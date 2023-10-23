@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
+import { map } from 'lit/directives/map.js';
 
 type Task = {
   id: Number;
@@ -26,7 +27,7 @@ export class ToDoListElement extends LitElement {
   protected override render(): unknown {
     return html`
       <h1>ToDo List</h1>
-      ${this._tasks.map((task) => {
+      ${map(this._tasks, (task) => {
         return html`
           <li>
             <label>
@@ -36,16 +37,6 @@ export class ToDoListElement extends LitElement {
           </li>
         `;
       })}
-
-      <li>
-        <label><input type="checkbox" />タスク1</label>
-      </li>
-      <li>
-        <label><input type="checkbox" />タスク2</label>
-      </li>
-      <li>
-        <label><input type="checkbox" />タスク3</label>
-      </li>
     `;
   }
 }
